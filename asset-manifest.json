@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "//EarningsTracking/static/css/main.2850d3ca.css",
+    "main.js": "//EarningsTracking/static/js/main.43bfc0c7.js",
+    "index.html": "//EarningsTracking/index.html",
+    "main.2850d3ca.css.map": "//EarningsTracking/static/css/main.2850d3ca.css.map",
+    "main.43bfc0c7.js.map": "//EarningsTracking/static/js/main.43bfc0c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2850d3ca.css",
+    "static/js/main.43bfc0c7.js"
+  ]
+}
