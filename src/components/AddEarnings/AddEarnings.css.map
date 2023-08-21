@@ -1,1 +1,1 @@
-{"version":3,"sources":["AddEarnings.scss","AddEarnings.css"],"names":[],"mappings":"AAAA;EACI,eAAA;EACA,aAAA;EACA,WAAA;EACA,kCAAA;ACCJ;ADAI;EACI,WAAA;EACA,gBAAA;ACER;ADAI;EACI,eAAA;EACA,gBAAA;ACER","file":"AddEarnings.css"}
+{"version":3,"sources":["AddEarnings.scss","AddEarnings.css","../../data/_variables.scss"],"names":[],"mappings":"AAEA;EACI,eAAA;EACA,aAAA;EACA,WAAA;EACA,kCAAA;ACDJ;ADEI;EACI,WAAA;EACA,gBAAA;ACAR;ADEI;EACI,eAAA;EACA,gBAAA;EACA,gBAAA;EACA,4BEZK;EFaL,YAAA;EACA,YAAA;EACA,kBAAA;EACA,gBAAA;EACA,kBAAA;ACAR","file":"AddEarnings.css"}

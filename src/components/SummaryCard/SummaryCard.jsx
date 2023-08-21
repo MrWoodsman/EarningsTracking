@@ -35,7 +35,7 @@ export function SummaryCard(props) {
 	function handleCalculateWeek() {
 		let sum = 0;
 		earnings.map(el => {
-			sum += Number(el.value);
+			// sum += Number(el.value);
 		});
 		return sum;
 	}

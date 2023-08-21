@@ -9,6 +9,13 @@
   padding: 0.25rem;
 }
 .AddNewEarningInput button {
-  padding: 0.5rem;
+  cursor: pointer;
+  padding: 0.75rem;
   grid-column: 1/4;
+  background: rgb(50, 151, 50);
+  border: none;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
 }/*# sourceMappingURL=AddEarnings.css.map */
