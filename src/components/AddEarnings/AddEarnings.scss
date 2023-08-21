@@ -1,0 +1,14 @@
+.AddNewEarningInput {
+    padding: .5rem;
+    display: grid;
+    gap: .5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    input {
+        width: 100%;
+        padding: .25rem;
+    }
+    button {
+        padding: .5rem;
+        grid-column: 1 / 4;
+    }
+}

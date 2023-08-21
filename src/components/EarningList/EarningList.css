@@ -1,0 +1,63 @@
+.EarningList {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.EarningList table {
+  width: 100%;
+  font-size: 0.95rem;
+}
+.EarningList th:nth-child(1) {
+  width: auto;
+}
+.EarningList th:nth-child(2) {
+  width: 10%;
+}
+.EarningList th:nth-child(3) {
+  width: 10%;
+}
+.EarningList table, .EarningList tr, .EarningList th, .EarningList td {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+.EarningList td:nth-child(3) {
+  text-align: right;
+}
+.EarningList th, .EarningList td {
+  padding: 0.25rem 0.5rem;
+}
+.EarningList th {
+  text-align: left;
+}
+.EarningList th:last-child {
+  height: 2rem;
+  width: 2rem;
+}
+.EarningList td {
+  white-space: nowrap;
+}
+.EarningList td:last-child {
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  background: none;
+}
+.EarningList td:last-child button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.EarningList td:last-child button i {
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: rgb(204, 44, 44);
+}/*# sourceMappingURL=EarningList.css.map */
