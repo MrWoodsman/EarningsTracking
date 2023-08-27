@@ -1,0 +1,55 @@
+@import "../../../data/variables";
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    gap: .75rem;
+    min-height: 100vh;
+    width: 100%;
+    label {
+        width: 100%;
+    }
+    input {
+        width: 100%;
+        padding: .35rem;
+        border: 2px gray solid;
+        border-radius: 6px;
+        outline: none;
+    }
+    .Button {
+        padding: .75rem 1rem;
+    }
+}
+
+.inputGroup {
+    width: 75%;
+    max-width: $logFromInputMaxSize;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .15rem;
+}
+
+.Flex1 {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.Director {
+    background: none;
+    cursor: pointer;
+    border: none;
+    text-decoration: underline;
+}
+
+.BackToLogin {
+    cursor: pointer;
+    position: absolute;
+    top: calc(.75rem - 4px);
+    left: .75rem;
+    font-size: 2rem;
+    transform: rotate(-45deg);
+}

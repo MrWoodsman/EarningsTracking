@@ -1,0 +1,68 @@
+.RegisterFrom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 1rem;
+  min-height: 100vh;
+  width: 100%;
+}
+.RegisterFrom label {
+  width: 100%;
+}
+.RegisterFrom input {
+  width: 100%;
+  padding: 0.35rem;
+  border: 2px gray solid;
+  border-radius: 6px;
+  outline: none;
+}
+.RegisterFrom .Button {
+  padding: 0.75rem 1rem;
+}
+
+.inputGroup {
+  width: 75%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.Flex1 {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.Director {
+  background: none;
+  cursor: pointer;
+  border: none;
+  text-decoration: underline;
+}
+
+.BackToLogin {
+  cursor: pointer;
+  position: absolute;
+  top: calc(0.75rem - 4px);
+  left: 0.75rem;
+  font-size: 2rem;
+  transform: rotate(-45deg);
+}
+
+.ErrorText {
+  padding: 0rem 0.5rem;
+  color: red;
+}
+
+.ErrorInput {
+  border: 2px red solid !important;
+  border-radius: 6px;
+}
+
+.InfoText {
+  color: gray;
+  font-size: 0.95rem;
+}/*# sourceMappingURL=Register.css.map */

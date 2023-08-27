@@ -4,7 +4,7 @@ import "./AddEarnings.css";
 
 export function AddEarnings() {
 	const dispatch = useEarningsDispatch();
-	const test = useEarnings();
+	// const test = useEarnings();
 	let now = new Date();
 
 	const [name, setName] = useState();
