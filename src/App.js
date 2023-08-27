@@ -70,12 +70,12 @@ function App() {
 	}
 	return (
 		<>
-			<button onClick={signOut}>Wyloguj</button>
 			<Routes>
 				<Route
 					path="/EarningsTracking"
 					element={
 						<div className="App">
+							<button onClick={signOut}>Wyloguj</button>
 							<AddEarnings></AddEarnings>
 							<SummaryCard type="all"></SummaryCard>
 							<SummaryCard type="month"></SummaryCard>
