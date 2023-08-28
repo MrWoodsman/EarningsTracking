@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useData, useDataDispatch, usePropertyValue } from "../../../data/dataContext";
 
 import { db } from "../../../SupaBase/FireBaseClient";
+import { doc, setDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export function Register() {
@@ -30,6 +31,11 @@ export function Register() {
 				// ? Jeśli uda się utworzyć konto
 				const user = userCredential.user;
 				// ? Tworzenie w bazie danych
+				setDoc(doc(db, "cities", "LA"), {
+					name: "Los Angeles",
+					state: "CA",
+					country: "USA",
+				});
 				// todo
 				// ? Wysyłanie do danych ze jest możliwość zmiany ekranu
 				UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: true });
@@ -40,10 +46,12 @@ export function Register() {
 			.catch(error => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
-				console.warn(errorCode);
+
 				if (errorCode === "auth/email-already-in-use") {
 					setErrorMsg("Email jest już w użyciu!");
 				}
+				// ! DEV - wyświetlanie kodu błędu
+				console.warn(errorCode);
 			});
 	}
 
