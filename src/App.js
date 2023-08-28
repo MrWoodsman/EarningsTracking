@@ -13,32 +13,73 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useData, useDataDispatch, usePropertyValue } from "../src/data/dataContext";
 
 import { db } from "../src/SupaBase/FireBaseClient";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+import { useEarnings, useEarningsDispatch } from "../src/data/earningsContext";
+
 function App() {
+	const dispatch = useEarningsDispatch();
+	const earnings = useEarnings();
+
 	const UserDataDispatch = useDataDispatch();
 	const UserData = useData();
 	const navigate = useNavigate();
 	const auth = getAuth();
 	const shouldNavigate = usePropertyValue("shouldNavigate");
-	onAuthStateChanged(auth, user => {
+
+	const getAllData = async (db_id, user_uid) => {
+		try {
+			console.warn(user_uid);
+			// Jesli uda sie znalezcz liste pobierz wszytstkie elementy
+			const b = query(collection(db, `/users/${user_uid}/earningsList/${db_id}/list`));
+
+			const querySnapshot = await getDocs(b);
+			querySnapshot.forEach(doc => {
+				// doc.data() is never undefined for query doc snapshots
+				console.warn(doc.data().id);
+				dispatch({
+					type: "added",
+					id: doc.data().id,
+					title: doc.data().title,
+					date: doc.data().date,
+					value: Number(doc.data().value).toFixed(2),
+				});
+				console.log(doc.id, " => ", doc.data());
+			});
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const handleAuthStateChanged = async user => {
 		if (user) {
 			const uid = user.uid;
-			console.warn(uid);
 
-			// Sprawdź, czy użytkownik jest zalogowany i czy nastąpiła zmiana nawigacji
 			if (shouldNavigate) {
 				navigate("/EarningsTracking");
 				UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: false });
+
+				try {
+					const q = query(collection(db, `/users/${uid}/earningsList`), where("id", "==", "0"));
+					const querySnapshot = await getDocs(q);
+					querySnapshot.forEach(doc => {
+						console.log(doc.id, " => ", doc.data());
+						getAllData(doc.id, uid);
+					});
+				} catch (error) {
+					console.error(error);
+				}
 			}
 		} else {
-			// Sprawdź, czy użytkownik jest wylogowany i czy nastąpiła zmiana nawigacji
 			if (shouldNavigate) {
 				navigate("/EarningsTracking/login");
 				UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: false });
 			}
 		}
-	});
+	};
+
+	onAuthStateChanged(auth, handleAuthStateChanged);
 
 	// ? Zmienne
 	// const logdedValue = usePropertyValue("loged");

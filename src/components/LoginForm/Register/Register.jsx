@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { useData, useDataDispatch, usePropertyValue } from "../../../data/dataContext";
 
 import { db } from "../../../SupaBase/FireBaseClient";
-import { doc, setDoc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, doc, setDoc, addDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export function Register() {
 	const UserDataDispatch = useDataDispatch();
@@ -24,35 +24,55 @@ export function Register() {
 
 	const navigate = useNavigate();
 
-	function CreateNewUser() {
+	async function CreateNewUser() {
 		const auth = getAuth();
-		createUserWithEmailAndPassword(auth, email, password)
-			.then(userCredential => {
-				// ? Jeśli uda się utworzyć konto
-				const user = userCredential.user;
-				// ? Tworzenie w bazie danych
-				setDoc(doc(db, "cities", "LA"), {
-					name: "Los Angeles",
-					state: "CA",
-					country: "USA",
-				});
-				// todo
-				// ? Wysyłanie do danych ze jest możliwość zmiany ekranu
-				UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: true });
+		try {
+			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+			const user = userCredential.user;
 
-				// ! DEV - wyświetlanie uzytkownika
-				console.warn(user);
-			})
-			.catch(error => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-
-				if (errorCode === "auth/email-already-in-use") {
-					setErrorMsg("Email jest już w użyciu!");
-				}
-				// ! DEV - wyświetlanie kodu błędu
-				console.warn(errorCode);
+			await updateProfile(userCredential.user, {
+				displayName: firstName,
 			});
+
+			await setDoc(doc(db, "users", user.uid), {
+				email: email,
+				firstName: firstName,
+			});
+
+			const docRef = await addDoc(collection(db, `users/${user.uid}/earningsList`), {
+				id: "0",
+				name: "default",
+			});
+			// console.warn(docRef);
+
+			const newDocRef = await addDoc(
+				collection(db, `users/${user.uid}/earningsList/${docRef.id}/list`),
+				{
+					id: Date.now(),
+					title: "Przykładowa wartość",
+					value: 50.55,
+					date: "28.08.2023",
+				}
+			);
+			// console.warn(newDocRef);
+
+			UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: true });
+
+			console.warn(user);
+		} catch (error) {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+
+			if (errorCode === "auth/email-already-in-use") {
+				setErrorMsg("Email jest już w użyciu!");
+			}
+
+			if (errorCode === "auth/invalid-email") {
+				setErrorMsg("Email jest niepoprawny!");
+			}
+
+			console.error(errorCode);
+		}
 	}
 
 	useEffect(() => {

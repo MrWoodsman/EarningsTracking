@@ -1,71 +1,5 @@
 @import "../../../data/variables";
-
-.RegisterFrom {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 0.5rem;
-	gap: 1rem;
-	min-height: 100vh;
-	width: 100%;
-	label {
-		width: 100%;
-	}
-	input {
-		width: 100%;
-		padding: 0.35rem;
-		border: 2px gray solid;
-		border-radius: 6px;
-		outline: none;
-	}
-	.Button {
-		padding: 0.75rem 1rem;
-	}
-}
-
-.inputGroup {
-	width: 75%;
-	max-width: $logFromInputMaxSize;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 0.15rem;
-}
-
-.Flex1 {
-	display: flex;
-	gap: 1.5rem;
-}
-
-.Director {
-	background: none;
-	cursor: pointer;
-	border: none;
-	text-decoration: underline;
-}
-
-.BackToLogin {
-	cursor: pointer;
-	position: absolute;
-	top: calc(0.75rem - 4px);
-	left: 0.75rem;
-	font-size: 2rem;
-	transform: rotate(-45deg);
-}
-
-.ErrorText {
-	padding: 0rem 0.5rem;
-	color: red;
-}
-.ErrorInput {
-	border: 2px red solid !important;
-	border-radius: 6px;
-}
-.InfoText {
-	color: gray;
-	font-size: 0.95rem;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 .registerFormNew {
 	display: flex;
@@ -73,7 +7,7 @@
 	gap: 1.5rem;
 	max-width: 400px;
 	width: 100%;
-
+	padding: $loginPadding;
 	h1 {
 		color: #000;
 		font-family: Roboto;
