@@ -15,6 +15,8 @@ export function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
+	const [errorMsg, setErrorMsg] = useState("");
+
 	const auth = getAuth();
 	function loginUser() {
 		signInWithEmailAndPassword(auth, email, password)
@@ -28,34 +30,91 @@ export function Login() {
 			.catch(error => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
-				console.warn(errorMessage);
+				console.warn(errorCode);
+				if (errorCode === "auth/invalid-email") {
+					setErrorMsg("Niepoprawny email!");
+				}
+				if (errorCode === "auth/missing-password") {
+					setErrorMsg("Brak hasła!");
+				}
+				if (errorCode === "auth/wrong-password") {
+					setErrorMsg("Błędne hasło!");
+				}
+				if (errorCode === "auth/user-not-found") {
+					setErrorMsg("Brak użytkownika!");
+				}
 			});
 	}
 
 	return (
-		<div className="LoginForm">
-			<h2>Zaloguj się</h2>
-			<div className="inputGroup">
-				<label htmlFor="">E-mail</label>
-				<input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-			</div>
-			<div className="inputGroup">
-				<label htmlFor="">Hasło</label>
-				<input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-			</div>
-			<div className="Flex1">
-				<button className="Director" onClick={() => navigate("/EarningsTracking/register")}>
-					Nie posiadam konta
-				</button>
-				<button className="Director">Zapomniałem hasła</button>
-			</div>
-			<button
-				className="Button"
-				// onClick={() => UserDataDispatch({ type: "edited", nazwa: "loged", wartosc: true })}
-				onClick={() => loginUser()}
-			>
-				Zaloguj się
-			</button>
-		</div>
+		<section className="centredOnWeb">
+			<section className="loginFormNew">
+				<div className="flexColumn8">
+					<h1>Witamy ponownie!</h1>
+					<p>Zacznij zarządzać swoimi zarobkami szybciej i lepiej</p>
+				</div>
+				{errorMsg ? <p className="errorText">{errorMsg}</p> : ""}
+				<div className="flexColumn8">
+					<div className="inputBox">
+						<i className="bi bi-envelope"></i>
+						<input
+							type="email"
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							placeholder="User@example.com"
+						/>
+					</div>
+					<div className="inputBox">
+						<i className="bi bi-lock"></i>
+						<input
+							type="password"
+							value={password}
+							onChange={e => setPassword(e.target.value)}
+							placeholder="Hasło"
+						/>
+					</div>
+				</div>
+				<div className="flexColumn8">
+					<div className="alignRight">
+						<button className="textButton">Zapomniałeś hasła?</button>
+					</div>
+					<button className="normalButton" onClick={() => loginUser()}>
+						Zaloguj
+					</button>
+				</div>
+				<div className="flexClumn8">
+					<p style={{ textAlign: "center" }}>
+						Nie masz konta?{" "}
+						<button onClick={() => navigate("/EarningsTracking/register")} className="textButton">
+							Zarejestruj się
+						</button>
+					</p>
+				</div>
+			</section>
+		</section>
+		// <div className="LoginForm">
+		// 	<h2>Zaloguj się</h2>
+		// 	<div className="inputGroup">
+		// 		<label htmlFor="">E-mail</label>
+		// 		<input type="email " value={email} onChange={e => setEmail(e.target.value)} />
+		// 	</div>
+		// 	<div className="inputGroup">
+		// 		<label htmlFor="">Hasło</label>
+		// 		<input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+		// 	</div>
+		// 	<div className="Flex1">
+		// 		<button className="Director" onClick={() => navigate("/EarningsTracking/register")}>
+		// 			Nie posiadam konta
+		// 		</button>
+		// 		<button className="Director">Zapomniałem hasła</button>
+		// 	</div>
+		// 	<button
+		// 		className="Button"
+		// 		// onClick={() => UserDataDispatch({ type: "edited", nazwa: "loged", wartosc: true })}
+		// 		onClick={() => loginUser()}
+		// 	>
+		// 		Zaloguj się
+		// 	</button>
+		// </div>
 	);
 }

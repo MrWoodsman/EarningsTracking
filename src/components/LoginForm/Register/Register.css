@@ -65,4 +65,126 @@
 .InfoText {
   color: gray;
   font-size: 0.95rem;
+}
+
+.registerFormNew {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 400px;
+  width: 100%;
+}
+.registerFormNew h1 {
+  color: #000;
+  font-family: Roboto;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.registerFormNew p {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Roboto;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+}
+.registerFormNew .iButton {
+  cursor: pointer;
+  color: rgb(0, 0, 0) !important;
+}
+.registerFormNew .textButton {
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: none;
+  border: none;
+  color: rgb(21, 122, 255);
+  font-family: Roboto;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.registerFormNew .normalButton {
+  cursor: pointer;
+  background: rgb(21, 122, 255);
+  border-radius: 0.625rem;
+  padding: 0.625rem;
+  border: none;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.registerFormNew .normalButton:disabled {
+  cursor: auto;
+  background: rgb(124, 124, 124);
+}
+.registerFormNew .inputBox {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+.registerFormNew .inputBox i {
+  color: rgb(21, 122, 255);
+  font-size: 1.125rem;
+  line-height: 100%;
+}
+.registerFormNew .inputBox input {
+  width: 100%;
+  outline: none;
+  padding: 0.75rem 0rem;
+  font-family: "Roboto", sans-serif;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 100%;
+}
+.registerFormNew .errorText {
+  color: red !important;
+  font-size: 0.8rem;
+}
+.registerFormNew .infoList {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Roboto;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+}
+.registerFormNew .infoList li {
+  padding: 0.2rem 0;
+}
+
+.alignRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flexColumn,
+.flexColumn8 {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexColumn8 {
+  gap: 8px;
+}
+
+.centredOnWeb {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=Register.css.map */

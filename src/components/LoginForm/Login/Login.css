@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .LoginForm {
   display: flex;
   flex-direction: column;
@@ -50,4 +51,107 @@
   left: 0.75rem;
   font-size: 2rem;
   transform: rotate(-45deg);
+}
+
+.loginFormNew {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 400px;
+  width: 100%;
+}
+.loginFormNew h1 {
+  color: #000;
+  font-family: Roboto;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.loginFormNew p {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Roboto;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 128.571% */
+}
+.loginFormNew .textButton {
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: none;
+  border: none;
+  color: rgb(21, 122, 255);
+  font-family: Roboto;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.loginFormNew .normalButton {
+  cursor: pointer;
+  background: rgb(21, 122, 255);
+  border-radius: 0.625rem;
+  padding: 0.625rem;
+  border: none;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.loginFormNew .inputBox {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+.loginFormNew .inputBox i {
+  color: rgb(21, 122, 255);
+  font-size: 1.125rem;
+  line-height: 100%;
+}
+.loginFormNew .inputBox input {
+  width: 100%;
+  outline: none;
+  padding: 0.75rem 0rem;
+  font-family: "Roboto", sans-serif;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 100%;
+}
+.loginFormNew .errorText {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.alignRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flexColumn,
+.flexColumn8 {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexColumn8 {
+  gap: 8px;
+}
+
+.centredOnWeb {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=Login.css.map */
