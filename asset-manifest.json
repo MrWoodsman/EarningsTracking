@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/EarningsTracking/static/css/main.bbbed8a9.css",
-    "main.js": "/EarningsTracking/static/js/main.443d13b0.js",
+    "main.css": "/EarningsTracking/static/css/main.4396d8eb.css",
+    "main.js": "/EarningsTracking/static/js/main.8f05a0ef.js",
     "index.html": "/EarningsTracking/index.html",
-    "main.bbbed8a9.css.map": "/EarningsTracking/static/css/main.bbbed8a9.css.map",
-    "main.443d13b0.js.map": "/EarningsTracking/static/js/main.443d13b0.js.map"
+    "main.4396d8eb.css.map": "/EarningsTracking/static/css/main.4396d8eb.css.map",
+    "main.8f05a0ef.js.map": "/EarningsTracking/static/js/main.8f05a0ef.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbbed8a9.css",
-    "static/js/main.443d13b0.js"
+    "static/css/main.4396d8eb.css",
+    "static/js/main.8f05a0ef.js"
   ]
 }
