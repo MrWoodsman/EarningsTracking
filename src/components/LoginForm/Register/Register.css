@@ -65,6 +65,7 @@
   gap: 0.5rem;
   border-radius: 0.75rem;
   background: rgba(0, 0, 0, 0.1);
+  /* Change autocomplete styles in WebKit */
 }
 .registerFormNew .inputBox i {
   color: rgb(21, 122, 255);
@@ -81,6 +82,21 @@
   font-size: 0.85rem;
   font-weight: 500;
   line-height: 100%;
+}
+.registerFormNew .inputBox input:-webkit-autofill,
+.registerFormNew .inputBox input:-webkit-autofill:hover,
+.registerFormNew .inputBox input:-webkit-autofill:focus,
+.registerFormNew .inputBox textarea:-webkit-autofill,
+.registerFormNew .inputBox textarea:-webkit-autofill:hover,
+.registerFormNew .inputBox textarea:-webkit-autofill:focus,
+.registerFormNew .inputBox select:-webkit-autofill,
+.registerFormNew .inputBox select:-webkit-autofill:hover,
+.registerFormNew .inputBox select:-webkit-autofill:focus {
+  border: 1px solid none;
+  -webkit-text-fill-color: none;
+  -webkit-box-shadow: 0 0 0px 1000px none inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 .registerFormNew .errorText {
   color: red !important;
@@ -115,7 +131,7 @@
 
 .centredOnWeb {
   min-width: 100vw;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;

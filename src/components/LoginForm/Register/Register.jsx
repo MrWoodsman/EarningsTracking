@@ -146,6 +146,7 @@ export function Register() {
 					<div className="inputBox">
 						<i className="bi bi-person"></i>
 						<input
+							name="registerFirstName"
 							type="text"
 							value={firstName}
 							onChange={e => setFirstName(e.target.value)}
@@ -155,6 +156,7 @@ export function Register() {
 					<div className="inputBox">
 						<i className="bi bi-envelope"></i>
 						<input
+							name="registerEmail"
 							type="email"
 							value={email}
 							onChange={e => setEmail(e.target.value)}
@@ -164,6 +166,7 @@ export function Register() {
 					<div className="inputBox">
 						<i className="bi bi-lock"></i>
 						<input
+							name="registerPassword"
 							type={inputType}
 							value={password}
 							onChange={e => setPassword(e.target.value)}
@@ -201,62 +204,5 @@ export function Register() {
 				</div>
 			</section>
 		</section>
-		// <div className="RegisterFrom">
-		// 	<div className="inputGroup">
-		// 		<h2>Utwórz konto</h2>
-		// 		<button className="Director" onClick={() => navigate("/EarningsTracking/login")}>
-		// 			Posiadasz konto?
-		// 		</button>
-		// 	</div>
-		// 	{/* <div className="inputGroup">
-		// 		<label htmlFor="">Imię</label>
-		// 		<input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} />
-		// 	</div>
-		// 	<div className="inputGroup">
-		// 		<label htmlFor="">Nazwisko</label>
-		// 		<input type="text" value={lastName} onChange={e => setLastName(e.target.value)} />
-		// 	</div> */}
-		// 	<div className="inputGroup">
-		// 		<label htmlFor="">E-mail</label>
-		// 		<input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-		// 	</div>
-		// 	<div className="inputGroup">
-		// 		<label htmlFor="">
-		// 			Hasło
-		// 			{samePasswords ? (
-		// 				<span className="ErrorText"></span>
-		// 			) : (
-		// 				<span className="ErrorText">- nie jest takie same</span>
-		// 			)}
-		// 			{passwordLenght ? (
-		// 				<span className="ErrorText"></span>
-		// 			) : (
-		// 				<span className="ErrorText">( min. 6 znaków. )</span>
-		// 			)}
-		// 		</label>
-		// 		<input
-		// 			type="password"
-		// 			className={samePasswords ? "" : "ErrorInput"}
-		// 			value={password}
-		// 			onChange={e => setPassword(e.target.value)}
-		// 		/>
-		// 	</div>
-		// 	<div className="inputGroup">
-		// 		<label htmlFor="">Potwierdz Hasło</label>
-		// 		<input
-		// 			className={samePasswords ? "" : "ErrorInput"}
-		// 			type="password"
-		// 			value={secondPassword}
-		// 			onChange={e => setSecondPassword(e.target.value)}
-		// 		/>
-		// 	</div>
-
-		// 	{/* <button className="Button" disabled={emptyValue} onClick={CreateNewUser}>
-		// 		Utwórz konto
-		// 	</button> */}
-		// 	<button className="Button" onClick={CreateNewUser}>
-		// 		Utwórz konto
-		// 	</button>
-		// </div>
 	);
 }

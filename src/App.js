@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, Redirect, Navigate } from "react-router-dom";
 
 import { EarningList } from "./components/EarningList/EarningList";
 import { AddEarnings } from "./components/AddEarnings/AddEarnings";
@@ -117,18 +117,21 @@ function App() {
 					element={
 						<div className="App">
 							<button onClick={signOut}>Wyloguj</button>
-							<AddEarnings></AddEarnings>
-							<SummaryCard type="all"></SummaryCard>
-							<SummaryCard type="month"></SummaryCard>
-							<SummaryCard type="week"></SummaryCard>
-							<EarningList></EarningList>
+							<AddEarnings />
+							<SummaryCard type="all" />
+							<SummaryCard type="month" />
+							<SummaryCard type="week" />
+							<EarningList />
 						</div>
 					}
 				/>
 
-				<Route path="/EarningsTracking/login" element={<Login></Login>} />
+				<Route path="/EarningsTracking/login" element={<Login />} />
 
-				<Route path="/EarningsTracking/register" element={<Register></Register>} />
+				<Route path="/EarningsTracking/register" element={<Register />} />
+
+				{/* Przekierowanie dla nieznalezionych ścieżek */}
+				<Route path="*" element={<Navigate to="/EarningsTracking" />} />
 			</Routes>
 		</>
 	);
