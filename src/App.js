@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Route, Routes, Redirect, Navigate } from "react-router-dom";
+import { Link, Switch, Route, Routes, Redirect, Navigate } from "react-router-dom";
 
 import { EarningList } from "./components/EarningList/EarningList";
 import { AddEarnings } from "./components/AddEarnings/AddEarnings";

@@ -7,17 +7,17 @@ import App from "./App";
 import { EarningProvider } from "./data/earningsContext";
 import { DataProvider } from "./data/dataContext";
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	// <React.StrictMode>
-	<BrowserRouter>
+	<HashRouter>
 		<DataProvider>
 			<EarningProvider>
 				<App />
 			</EarningProvider>
 		</DataProvider>
-	</BrowserRouter>
+	</HashRouter>
 	// </React.StrictMode>
 );
