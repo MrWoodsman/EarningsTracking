@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/EarningsTracking/static/css/main.4396d8eb.css",
-    "main.js": "/EarningsTracking/static/js/main.2c3e0ec1.js",
+    "main.css": "/EarningsTracking/static/css/main.649d3f25.css",
+    "main.js": "/EarningsTracking/static/js/main.a014f0e4.js",
+    "static/media/ph_calendar.svg": "/EarningsTracking/static/media/ph_calendar.b961b5d4eb814fd5f794bde466ff08ec.svg",
+    "static/media/material-symbols_attach-money.svg": "/EarningsTracking/static/media/material-symbols_attach-money.409b22fc7d1fc364fc653899ba5d733b.svg",
     "index.html": "/EarningsTracking/index.html",
-    "main.4396d8eb.css.map": "/EarningsTracking/static/css/main.4396d8eb.css.map",
-    "main.2c3e0ec1.js.map": "/EarningsTracking/static/js/main.2c3e0ec1.js.map"
+    "static/media/material-symbols_title.svg": "/EarningsTracking/static/media/material-symbols_title.fa074fadaedaaed6e83bf303a0669a80.svg",
+    "main.649d3f25.css.map": "/EarningsTracking/static/css/main.649d3f25.css.map",
+    "main.a014f0e4.js.map": "/EarningsTracking/static/js/main.a014f0e4.js.map"
   },
   "entrypoints": [
-    "static/css/main.4396d8eb.css",
-    "static/js/main.2c3e0ec1.js"
+    "static/css/main.649d3f25.css",
+    "static/js/main.a014f0e4.js"
   ]
 }
