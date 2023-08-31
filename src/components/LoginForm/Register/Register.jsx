@@ -197,7 +197,7 @@ export function Register() {
 				<div className="flexClumn8">
 					<p style={{ textAlign: "center" }}>
 						Posiadasz już konto?{" "}
-						<button onClick={() => navigate("/EarningsTracking/login")} className="textButton">
+						<button onClick={() => navigate("/login")} className="textButton">
 							Zaloguj się
 						</button>
 					</p>

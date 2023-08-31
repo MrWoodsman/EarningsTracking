@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import "./Login.css";
 
@@ -22,9 +22,10 @@ export function Login() {
 		signInWithEmailAndPassword(auth, email, password)
 			.then(userCredential => {
 				// Signed in
+				UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: true });
+				console.log("Udało się zalogować!");
 				const user = userCredential.user;
 				console.warn(user);
-				UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: true });
 				// ...
 			})
 			.catch(error => {
@@ -87,7 +88,7 @@ export function Login() {
 				<div className="flexClumn8">
 					<p style={{ textAlign: "center" }}>
 						Nie masz konta?{" "}
-						<button onClick={() => navigate("/EarningsTracking/register")} className="textButton">
+						<button onClick={() => navigate("/register")} className="textButton">
 							Zarejestruj się
 						</button>
 					</p>

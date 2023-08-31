@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 0.5rem;
+  border-bottom: 1px solid #c9c9c9;
+  background: #ececec;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.05), 0px 19px 42px 0px rgba(0, 0, 0, 0.05), 0px 76px 76px 0px rgba(0, 0, 0, 0.04), 0px 171px 103px 0px rgba(0, 0, 0, 0.03), 0px 305px 122px 0px rgba(0, 0, 0, 0.01), 0px 476px 133px 0px rgba(0, 0, 0, 0);
+}
+.navbar_logout {
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-family: Roboto;
+  background: rgb(21, 122, 255);
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}/*# sourceMappingURL=Navbar.css.map */

@@ -6,6 +6,10 @@ import { getAuth } from "firebase/auth";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../SupaBase/FireBaseClient";
 
+import textIcon from "../../assets/icon/material-symbols_title.svg";
+import moneyIcon from "../../assets/icon/material-symbols_attach-money.svg";
+import calendarIcon from "../../assets/icon/ph_calendar.svg";
+
 export function AddEarnings() {
 	const dispatch = useEarningsDispatch();
 	// const test = useEarnings();
@@ -60,26 +64,36 @@ export function AddEarnings() {
 
 	return (
 		<div className="AddNewEarningInput">
-			<input
-				type="text"
-				onChange={e => setName(e.target.value)}
-				placeholder="Nazwa"
-				defaultValue={name}
-			/>
-			<input
-				type="date"
-				onChange={e => setData(e.target.value)}
-				placeholder="Data"
-				defaultValue={data}
-			/>
-			<input
-				type="number"
-				onChange={e => setMoney(e.target.value)}
-				placeholder="Kwota"
-				defaultValue={money}
-			/>
+			<div className="AddNewEarningInput_inputBox">
+				<img src={textIcon} alt="text icon" />
+				<input
+					type="text"
+					onChange={e => setName(e.target.value)}
+					placeholder="Nazwa"
+					defaultValue={name}
+				/>
+			</div>
+			<div className="AddNewEarningInput_inputBox">
+				<img src={moneyIcon} alt="money icon" />
+				<input
+					type="date"
+					onChange={e => setData(e.target.value)}
+					placeholder="Data"
+					defaultValue={data}
+				/>
+			</div>
+			<div className="AddNewEarningInput_inputBox">
+				<img src={calendarIcon} alt="calendar icon" />
+				<input
+					type="number"
+					onChange={e => setMoney(e.target.value)}
+					placeholder="Kwota"
+					defaultValue={money}
+				/>
+				<span className="sufix">PLN</span>
+			</div>
 
-			<button onClick={() => handleAdd()}>Dodaj Nowe</button>
+			<button onClick={() => handleAdd()}>Dodaj</button>
 		</div>
 	);
 }

@@ -39,6 +39,9 @@ function earningsReducer(earnings, action) {
 		case "deleted": {
 			return earnings.filter(item => item.id !== action.id);
 		}
+		case "clear": {
+			return []; // Usuwanie wszystkiego
+		}
 		default: {
 			throw new Error("Unknown action: " + action.type);
 		}

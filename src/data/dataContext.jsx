@@ -72,4 +72,6 @@ const initialsData = [
 	{ nazwa: "session_id", wartosc: null },
 	{ nazwa: "access_token", wartosc: null },
 	{ nazwa: "shouldNavigate", wartosc: true },
+	{ nazwa: "firstLoad", wartosc: true },
+	{ nazwa: "isAuthenticated", wartosc: false },
 ];

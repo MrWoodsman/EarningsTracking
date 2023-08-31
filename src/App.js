@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+
+import "./App.css";
+
 import { Link, Switch, Route, Routes, Redirect, Navigate } from "react-router-dom";
 
 import { EarningList } from "./components/EarningList/EarningList";
@@ -7,6 +10,8 @@ import { SummaryCard } from "./components/SummaryCard/SummaryCard";
 
 import { Login } from "./components/LoginForm/Login/Login";
 import { Register } from "./components/LoginForm/Register/Register";
+
+import { Navbar } from "./components/Navbar/Navbar";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -27,10 +32,16 @@ function App() {
 	const navigate = useNavigate();
 	const auth = getAuth();
 	const shouldNavigate = usePropertyValue("shouldNavigate");
+	const firstLoad = usePropertyValue("firstLoad");
+
+	const isAuthenticated = usePropertyValue("isAuthenticated");
+	// const [firstLoad, setFirstLoad] = useState(true);
 
 	const getAllData = async (db_id, user_uid) => {
+		dispatch({
+			type: "clear",
+		});
 		try {
-			console.warn(user_uid);
 			// Jesli uda sie znalezcz liste pobierz wszytstkie elementy
 			const b = query(collection(db, `/users/${user_uid}/earningsList/${db_id}/list`));
 
@@ -52,86 +63,123 @@ function App() {
 		}
 	};
 
-	const handleAuthStateChanged = async user => {
-		if (user) {
-			const uid = user.uid;
+	// ? PODSTAWOWA MECHANIKA PO ZALOGOWANIU
+	const [userDbData, setUserDbData] = useState(null);
+	const [shouldAttachListener, setShouldAttachListener] = useState(true);
 
-			if (shouldNavigate) {
-				navigate("/EarningsTracking");
-				UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: false });
+	useEffect(() => {
+		if (shouldAttachListener) {
+			const unsubscribe = onAuthStateChanged(auth, user => {
+				if (user) {
+					setUserDbData(user);
+					UserDataDispatch({ type: "edited", nazwa: "isAuthenticated", wartosc: true });
+				}
+			});
 
+			return () => {
+				unsubscribe(); // Odpięcie nasłuchiwania przy odmontowaniu komponentu
+			};
+		}
+	}, [auth, shouldAttachListener]);
+
+	// ? Wywoływane każdorazowo przy zmianie [ testUser ]
+	useEffect(() => {
+		// Sprawdzanie czy zmienna jest ustawiona
+		if (userDbData) {
+			console.log(`Podstawowe ustawienia po zalogowaniu! User: ${userDbData.uid}`);
+			UserDataDispatch({ type: "edited", nazwa: "isAuthenticated", wartosc: true });
+			// navigate("/dashboard");
+			// ? Funkcja pobierająca wszystkie zarobki z lsity użytkownika
+			const startUp = async () => {
 				try {
-					const q = query(collection(db, `/users/${uid}/earningsList`), where("id", "==", "0"));
+					const q = query(
+						collection(db, `/users/${userDbData.uid}/earningsList`),
+						where("id", "==", "0")
+					);
 					const querySnapshot = await getDocs(q);
 					querySnapshot.forEach(doc => {
 						console.log(doc.id, " => ", doc.data());
-						getAllData(doc.id, uid);
+						getAllData(doc.id, userDbData.uid);
 					});
 				} catch (error) {
 					console.error(error);
 				}
-			}
+			};
+			startUp();
 		} else {
-			if (shouldNavigate) {
-				navigate("/EarningsTracking/login");
-				UserDataDispatch({ type: "edited", nazwa: "shouldNavigate", wartosc: false });
-			}
+			console.error(`Brak zalogowanego użytkownika!`);
+			UserDataDispatch({ type: "edited", nazwa: "isAuthenticated", wartosc: false });
+			// navigate("/login");
 		}
-	};
+	}, [userDbData]);
 
-	onAuthStateChanged(auth, handleAuthStateChanged);
-
-	// ? Zmienne
-	// const logdedValue = usePropertyValue("loged");
-	// useEffect(() => {
-	// 	if (test.pathname !== "/EarningsTracking") {
-	// 		getLoggedUser();
-	// 		if (logdedValue === true) {
-	// 			navigate("/EarningsTracking");
-	// 		} else if (logdedValue === false) {
-	// 			navigate("/EarningsTracking/login");
-	// 		}
-	// 	}
-	// 	// UserDataDispatch({ type: "edited", nazwa: "loged", wartosc: false });
-	// }, [UserData]);
-	// ? Ta zmiena chyba musi być tu i udzielić dostęp dla komponentów
-	// ? Ponieważ chce w kilku komponeentach korzystać z tego samego zestawu danych
-	// ? I żeby w każdym się aktalizowało, tylko muszę znaleźć jak to wykonać
-	function signOut() {
-		auth
-			.signOut()
-			.then(() => {
-				// Pomyślnie wylogowano użytkownika
-				navigate("/EarningsTracking/login");
-			})
-			.catch(error => {
-				// Obsłuż błąd wylogowania
-				console.warn(error);
-			});
+	function Dashboard() {
+		return (
+			<div className="App">
+				<Navbar></Navbar>
+				{/* <button
+					style={{ padding: ".5rem 1rem", margin: ".5rem", marginBottom: "0" }}
+					onClick={signOut}
+				>
+					Wyloguj
+				</button> */}
+				<AddEarnings />
+				<SummaryCard type="all" />
+				<SummaryCard type="month" />
+				<SummaryCard type="week" />
+				<EarningList />
+			</div>
+		);
 	}
+	// ? Główny komponent
 	return (
 		<>
 			<Routes>
 				<Route
+					path="/"
+					element={isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />}
+				/>
+
+				<Route
 					path="/EarningsTracking"
+					element={isAuthenticated ? <Navigate to="/dashboard" /> : <Navigate to="/login" />}
+				/>
+
+				<Route
+					path="/dashboard"
+					element={isAuthenticated ? <Dashboard></Dashboard> : <Navigate to="/login" />}
+				/>
+
+				<Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
+
+				<Route
+					path="/register"
+					element={isAuthenticated ? <Navigate to="/dashboard" /> : <Register />}
+				/>
+
+				{/* Przekierowanie dla nieznalezionych ścieżek */}
+				<Route
+					path="*"
 					element={
-						<div className="App">
-							<button onClick={signOut}>Wyloguj</button>
-							<AddEarnings />
-							<SummaryCard type="all" />
-							<SummaryCard type="month" />
-							<SummaryCard type="week" />
-							<EarningList />
+						<div
+							style={{
+								height: "100vh",
+								display: "flex",
+								flexDirection: "column",
+								alignItems: "center",
+								justifyContent: "center",
+								gap: "1rem",
+							}}
+						>
+							<h1>Nie znaleziono takiej strony!</h1>
+							<Link to="/EarningsTracking">
+								<button style={{ padding: ".5rem 1rem", cursor: "pointer" }}>
+									Powrót do strony głównej
+								</button>
+							</Link>
 						</div>
 					}
 				/>
-
-				<Route path="/EarningsTracking/login" element={<Login />} />
-
-				<Route path="/EarningsTracking/register" element={<Register />} />
-
-				{/* Przekierowanie dla nieznalezionych ścieżek */}
-				<Route path="*" element={<Navigate to="/EarningsTracking" />} />
 			</Routes>
 		</>
 	);

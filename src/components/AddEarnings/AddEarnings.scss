@@ -1,23 +1,63 @@
 @import "../../data/variables";
 
 .AddNewEarningInput {
-    padding: .5rem;
-    display: grid;
-    gap: .5rem;
-    grid-template-columns: 1fr 1fr 1fr;
-    input {
-        width: 100%;
-        padding: .25rem;
-    }
-    button {
-        cursor: pointer;
-        padding: .75rem;
-        grid-column: 1 / 4;
-        background: $good-color;
-        border: none;
-        color: white;
-        font-size: .95rem;
-        font-weight: 600;
-        border-radius: 8px;
-    }
+	margin: auto;
+	width: 100%;
+	max-width: 750px;
+	padding: 0 0.5rem;
+	gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	&_inputBox {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		background: $inputsBackgroundColor;
+		border: 1px solid $inputsBorderColor;
+
+		padding: 0 0.65rem;
+		border-radius: 0.5rem;
+		img {
+			height: 1.3rem;
+		}
+	}
+	input {
+		padding: 0.65rem 0;
+		width: 100%;
+
+		border-radius: 10px;
+		background: none;
+		border: none;
+
+		// TEXT
+		color: rgba(0, 0, 0, 0.5);
+		font-family: Roboto;
+		font-size: 0.9rem;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+
+		outline: none;
+	}
+	button {
+		cursor: pointer;
+		padding: 0.65rem;
+		grid-column: 1 / 4;
+		background: $acentColor;
+		border: 1px solid $inputsBorderColor;
+		color: white;
+		font-size: 0.95rem;
+		font-weight: 600;
+		border-radius: 0.625rem;
+	}
+
+	.sufix {
+		color: $acentColor;
+		// TEXT
+		font-family: Roboto;
+		font-size: 0.9rem;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+	}
 }
