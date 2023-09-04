@@ -80,7 +80,7 @@ export function EarningList() {
 									<td>{t.date}</td>
 									<td>{parseFloat(t.value).toFixed(2)} PLN</td>
 									<td>
-										<button onClick={e => handleDelate(e.target)}>
+										<button className="delateButton" onClick={e => handleDelate(e.target)}>
 											<i className="bi bi-trash-fill"></i>
 										</button>
 									</td>

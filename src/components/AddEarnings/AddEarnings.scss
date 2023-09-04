@@ -3,7 +3,7 @@
 .AddNewEarningInput {
 	margin: auto;
 	width: 100%;
-	max-width: 750px;
+	max-width: $maxWidthVariable;
 	padding: 0 0.5rem;
 	gap: 0.5rem;
 	display: flex;

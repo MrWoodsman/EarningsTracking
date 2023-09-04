@@ -1,63 +1,56 @@
 .EarningList {
+  width: 100%;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  max-width: 750px;
+  margin: auto;
 }
 .EarningList table {
+  background: #e9e9e9;
   width: 100%;
-  font-size: 0.95rem;
-}
-.EarningList th:nth-child(1) {
-  width: auto;
-}
-.EarningList th:nth-child(2) {
-  width: 10%;
-}
-.EarningList th:nth-child(3) {
-  width: 10%;
-}
-.EarningList table, .EarningList tr, .EarningList th, .EarningList td {
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+  text-align: left;
   border-collapse: collapse;
-  border: 1px solid black;
-}
-.EarningList td:nth-child(3) {
-  text-align: right;
-}
-.EarningList th, .EarningList td {
-  padding: 0.25rem 0.5rem;
 }
 .EarningList th {
-  text-align: left;
+  width: 100%;
 }
-.EarningList th:last-child {
-  height: 2rem;
-  width: 2rem;
-}
-.EarningList td {
+.EarningList td:nth-child(3) {
   white-space: nowrap;
 }
+.EarningList th {
+  padding: 0.5rem 0.5rem;
+  font-size: clamp(0.85rem, 5vw - 1rem, 1rem);
+}
+.EarningList td {
+  font-size: clamp(0.75rem, 5vw - 1rem, 0.9rem);
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 0.25rem 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.EarningList td:first-child {
+  border-left: none;
+}
 .EarningList td:last-child {
-  height: 2rem;
-  width: 2rem;
-  padding: 0;
-  background: none;
+  aspect-ratio: 1;
+  padding: 0.25rem;
+  border-right: none;
+  width: 1rem;
 }
-.EarningList td:last-child button {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  cursor: pointer;
+.EarningList tr:last-child td {
+  border-bottom: none;
+}
+.EarningList .delateButton {
   width: 100%;
-  height: 100%;
-  border: none;
-  font-size: 1rem;
-  font-weight: 700;
-}
-.EarningList td:last-child button i {
-  pointer-events: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
   color: rgb(204, 44, 44);
+  background: none;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border: none;
 }/*# sourceMappingURL=EarningList.css.map */

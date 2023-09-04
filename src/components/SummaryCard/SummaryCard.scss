@@ -6,8 +6,12 @@
 	border: 1px solid $inputsBorderColor;
 	// box-shadow: black 0px 0px 8px -4px;
 	padding: 0.75rem;
+	width: 100%;
+	max-width: calc($maxWidthVariable - 1rem);
+	margin: auto;
 	border-radius: 6px;
 	input {
+		text-transform: capitalize;
 		background: none;
 		color: rgba(0, 0, 0, 0.5);
 		font-family: Roboto;

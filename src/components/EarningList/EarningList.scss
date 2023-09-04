@@ -1,61 +1,65 @@
 @import "../../data/variables";
 
 .EarningList {
-    padding: .5rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    table {
-        width: 100%;
-        font-size: .95rem;
-    }
-    th:nth-child(1) {
-        width: auto;
-    }
-    th:nth-child(2) {
-        width: 10%;
-    }
-    th:nth-child(3) {
-        width: 10%;
-    }
-    table, tr, th, td {
-        border-collapse: collapse;
-        border: 1px solid black;
-    }
-    td:nth-child(3) {
-        text-align: right;
-    }
-    th, td {
-        padding: .25rem .5rem;
-    }
-    th {
-        text-align: left;
-    }
-    th:last-child {
-        height: 2rem;
-        width: 2rem;
-    }
-    td {
-        white-space: nowrap;
-    }
-    td:last-child {
-        height: 2rem;
-        width: 2rem;
-        padding: 0;
-        background: none;
-        button {
-            user-select: none;
-            cursor: pointer;
-            width: 100%;
-            height: 100%;
-            border: none;
-            font-size: 1rem;
-            font-weight: 700;
-            i {
-                pointer-events: none;
-                user-select: none;
-                color: $bad-color;
-            }
-        }
-    }
+	width: 100%;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	max-width: $maxWidthVariable;
+	margin: auto;
+	table {
+		background: $inputsBackgroundColor;
+		width: 100%;
+		font-size: 1rem;
+		border-radius: 0.5rem;
+		box-shadow: inset $inputsBorderColor 0px 0px 0px 1px;
+		text-align: left;
+		border-collapse: collapse;
+	}
+	th {
+		width: 100%;
+	}
+	td:nth-child(3) {
+		white-space: nowrap;
+	}
+	// Nazwy kolumn
+	th {
+		padding: 0.5rem 0.5rem;
+		font-size: clamp(0.85rem, calc(5vw - 1rem), 1rem);
+	}
+	// Komórki
+	td {
+		font-size: clamp(0.75rem, calc(5vw - 1rem), 0.9rem);
+		font-weight: 500;
+		color: rgba(0, 0, 0, 0.6);
+		// background: red;
+		padding: 0.25rem 0.5rem;
+		border-top: 1px solid $inputsBorderColor;
+		border-bottom: 1px solid $inputsBorderColor;
+	}
+	td:first-child {
+		border-left: none;
+	}
+	td:last-child {
+		// width: 1rem;
+		// height: 1rem;
+		aspect-ratio: 1;
+		padding: 0.25rem;
+		border-right: none;
+		width: 1rem;
+	}
+	tr:last-child {
+		td {
+			border-bottom: none;
+		}
+	}
+	.delateButton {
+		width: 100%;
+		color: $bad-color;
+		background: none;
+		font-size: 1rem;
+		padding: 0.25rem;
+		border: none;
+	}
 }
