@@ -8,6 +8,9 @@
 	gap: 0.5rem;
 	max-width: $maxWidthVariable;
 	margin: auto;
+	&_title {
+		margin: 0 0.3rem;
+	}
 	table {
 		background: $inputsBackgroundColor;
 		width: 100%;

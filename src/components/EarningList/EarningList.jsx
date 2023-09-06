@@ -64,7 +64,7 @@ export function EarningList() {
 	if (earnings !== undefined) {
 		return (
 			<div className="EarningList">
-				<h1>Lista zarobków:</h1>
+				<h2 className="EarningList_title">Lista zarobków</h2>
 				<table>
 					<tbody>
 						<tr>

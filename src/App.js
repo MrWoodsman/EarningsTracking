@@ -124,9 +124,13 @@ function App() {
 					Wyloguj
 				</button> */}
 				<AddEarnings />
-				<SummaryCard type="all" />
-				<SummaryCard type="month" />
-				<SummaryCard type="week" />
+				<div
+					style={{ margin: "0px .5rem", gap: ".5rem", display: "flex", flexDirection: "column" }}
+				>
+					<SummaryCard type="all" />
+					<SummaryCard type="month" />
+					<SummaryCard type="week" />
+				</div>
 				<EarningList />
 			</div>
 		);
