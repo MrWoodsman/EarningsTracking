@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/EarningsTracking/static/css/main.6c3521b5.css",
-    "main.js": "/EarningsTracking/static/js/main.67e11976.js",
+    "main.js": "/EarningsTracking/static/js/main.a81d2b8a.js",
     "static/media/ph_calendar.svg": "/EarningsTracking/static/media/ph_calendar.b961b5d4eb814fd5f794bde466ff08ec.svg",
     "static/media/material-symbols_attach-money.svg": "/EarningsTracking/static/media/material-symbols_attach-money.409b22fc7d1fc364fc653899ba5d733b.svg",
     "index.html": "/EarningsTracking/index.html",
     "static/media/material-symbols_title.svg": "/EarningsTracking/static/media/material-symbols_title.fa074fadaedaaed6e83bf303a0669a80.svg",
     "main.6c3521b5.css.map": "/EarningsTracking/static/css/main.6c3521b5.css.map",
-    "main.67e11976.js.map": "/EarningsTracking/static/js/main.67e11976.js.map"
+    "main.a81d2b8a.js.map": "/EarningsTracking/static/js/main.a81d2b8a.js.map"
   },
   "entrypoints": [
     "static/css/main.6c3521b5.css",
-    "static/js/main.67e11976.js"
+    "static/js/main.a81d2b8a.js"
   ]
 }
