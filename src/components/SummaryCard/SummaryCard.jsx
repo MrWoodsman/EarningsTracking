@@ -47,13 +47,49 @@ export function SummaryCard(props) {
 		return sum;
 	}
 
+	// ? Funkcje to obliczania tygodnia
+	function getCurrentWeek() {
+		const startOfYear = new Date(now.getFullYear(), 0, 1);
+		const daysSinceStart = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000)) + 1;
+		const currentWeek = Math.ceil(daysSinceStart / 7);
+		return currentWeek;
+	}
+
+	function isDateInWeek(selectedDate, weekString) {
+		const parts = weekString.split("-W");
+		if (parts.length === 2) {
+			const year = parseInt(parts[0], 10);
+			const targetWeek = parseInt(parts[1], 10);
+			if (!isNaN(year) && !isNaN(targetWeek)) {
+				const date = new Date(selectedDate);
+				const dateYear = date.getFullYear();
+				const dateWeek = getWeekNumber(date);
+
+				return dateYear === year && dateWeek === targetWeek;
+			}
+		}
+		return false;
+	}
+
+	function getWeekNumber(date) {
+		const d = new Date(date);
+		d.setHours(0, 0, 0, 0);
+		d.setDate(d.getDate() + 4 - (d.getDay() || 7));
+		const yearStart = new Date(d.getFullYear(), 0, 1);
+		const weekNumber = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+		return weekNumber;
+	}
+
 	// ? TYDZIEN
-	const [selectedWeek, setSelectedWeek] = useState({ week: 33, year: now.getFullYear() });
+	const [selectedWeek, setSelectedWeek] = useState(`${now.getFullYear()}-W${getCurrentWeek()}`);
 
 	function handleCalculateWeek() {
 		let sum = 0;
 		earnings.map(el => {
-			// sum += Number(el.value);
+			let changedDate = el.date.split(".").reverse().join("-");
+			if (isDateInWeek(changedDate, selectedWeek)) {
+				sum += Number(el.value);
+			}
 		});
 		return sum;
 	}
@@ -89,7 +125,7 @@ export function SummaryCard(props) {
 	if (props.type === "week") {
 		return (
 			<div className="SummaryCard">
-				<input type="week" />
+				<input type="week" value={selectedWeek} onChange={e => setSelectedWeek(e.target.value)} />
 				<h2>{handleCalculateWeek()} PLN</h2>
 			</div>
 		);
