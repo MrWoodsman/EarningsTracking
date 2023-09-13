@@ -58,11 +58,15 @@
 		}
 	}
 	.delateButton {
+		cursor: pointer;
 		width: 100%;
 		color: $bad-color;
 		background: none;
 		font-size: 1rem;
 		padding: 0.25rem;
 		border: none;
+		i {
+			pointer-events: none;
+		}
 	}
 }

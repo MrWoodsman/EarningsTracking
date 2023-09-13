@@ -50,10 +50,14 @@
   border-bottom: none;
 }
 .EarningList .delateButton {
+  cursor: pointer;
   width: 100%;
   color: rgb(204, 44, 44);
   background: none;
   font-size: 1rem;
   padding: 0.25rem;
   border: none;
+}
+.EarningList .delateButton i {
+  pointer-events: none;
 }/*# sourceMappingURL=EarningList.css.map */
