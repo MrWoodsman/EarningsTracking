@@ -11,7 +11,7 @@ export function EarningList() {
 	const earnings = useEarnings();
 
 	const handleDeleteFromDataBase = async (uid, ref, dbId) => {
-		console.warn(uid, ref, dbId);
+		// console.warn(uid, ref, dbId);
 		const querySnapshot = await getDocs(
 			query(
 				collection(db, `/users/${uid}/earningsList/${ref}/list`),
@@ -22,7 +22,7 @@ export function EarningList() {
 		const deletePromises = [];
 
 		querySnapshot.forEach(doc => {
-			console.log(doc.id, " => ", doc.data());
+			// console.log(doc.id, " => ", doc.data());
 			const deletePromise = deleteDoc(
 				doc.ref // Pobieramy referencję do dokumentu i usuwamy go
 			);
@@ -31,7 +31,7 @@ export function EarningList() {
 
 		try {
 			await Promise.all(deletePromises);
-			console.warn("Deletion successful");
+			// console.warn("Deletion successful");
 			// ? Usuwanie lokalnie
 			dispatch({
 				type: "deleted",
@@ -53,7 +53,7 @@ export function EarningList() {
 			const q = query(collection(db, `/users/${user.uid}/earningsList`), where("id", "==", "0"));
 			const querySnapshot = await getDocs(q);
 			querySnapshot.forEach(doc => {
-				console.log(doc.id, " => ", doc.data());
+				// console.log(doc.id, " => ", doc.data());
 				handleDeleteFromDataBase(user.uid, doc.id, dbId);
 			});
 		} catch (error) {

@@ -47,14 +47,14 @@ export function AddEarnings() {
 	const handleAdd = async () => {
 		const auth = getAuth();
 		const user = auth.currentUser;
-		console.warn(user.uid);
+		// console.warn(user.uid);
 
 		// ? Szukanie listy o [ id ] = 0
 		try {
 			const q = query(collection(db, `/users/${user.uid}/earningsList`), where("id", "==", "0"));
 			const querySnapshot = await getDocs(q);
 			querySnapshot.forEach(doc => {
-				console.log(doc.id, " => ", doc.data());
+				// console.log(doc.id, " => ", doc.data());
 				handleAddToDataBase(user.uid, doc.id);
 			});
 		} catch (error) {

@@ -48,7 +48,7 @@ function App() {
 			const querySnapshot = await getDocs(b);
 			querySnapshot.forEach(doc => {
 				// doc.data() is never undefined for query doc snapshots
-				console.warn(doc.data().id);
+				// console.warn(doc.data().id);
 				dispatch({
 					type: "added",
 					id: doc.data().id,
@@ -56,7 +56,7 @@ function App() {
 					date: doc.data().date,
 					value: Number(doc.data().value).toFixed(2),
 				});
-				console.log(doc.id, " => ", doc.data());
+				// console.log(doc.id, " => ", doc.data());
 			});
 		} catch (error) {
 			console.error(error);
@@ -98,7 +98,7 @@ function App() {
 					);
 					const querySnapshot = await getDocs(q);
 					querySnapshot.forEach(doc => {
-						console.log(doc.id, " => ", doc.data());
+						// console.log(doc.id, " => ", doc.data());
 						getAllData(doc.id, userDbData.uid);
 					});
 				} catch (error) {
@@ -107,7 +107,7 @@ function App() {
 			};
 			startUp();
 		} else {
-			console.error(`Brak zalogowanego użytkownika!`);
+			console.log(`Brak zalogowanego użytkownika!`);
 			UserDataDispatch({ type: "edited", nazwa: "isAuthenticated", wartosc: false });
 			// navigate("/login");
 		}
