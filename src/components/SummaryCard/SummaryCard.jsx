@@ -49,6 +49,16 @@ export function SummaryCard(props) {
 
 	// ? Funkcje to obliczania tygodnia
 	function getCurrentWeek() {
+		const now = new Date();
+		const dayOfWeek = now.getDay(); // 0 - niedziela, 1 - poniedziałek, ..., 6 - sobota
+
+		// Jeśli dzisiaj jest niedziela (dayOfWeek === 0), to odejmujemy 6 dni od daty
+		if (dayOfWeek === 0) {
+			now.setDate(now.getDate() - 6);
+		} else {
+			now.setDate(now.getDate() - dayOfWeek + 1); // Ustawiamy na początek aktualnego tygodnia (poniedziałek)
+		}
+
 		const startOfYear = new Date(now.getFullYear(), 0, 1);
 		const daysSinceStart = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000)) + 1;
 		const currentWeek = Math.ceil(daysSinceStart / 7);
@@ -113,6 +123,7 @@ export function SummaryCard(props) {
 	if (props.type === "month") {
 		return (
 			<div className="SummaryCard">
+				<div className=""></div>
 				<input
 					type="month"
 					value={selectedMonth}
